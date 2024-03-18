@@ -39,7 +39,7 @@
     "@ngrx/effects": "^14.0.2",
     "@ngrx/store": "^14.0.2",
     "@ngxs/store": "^3.7.4",
-    "auth0": "^3.0.1",
+    "auth0": "^3.7.2",
     "dateformat": "^5.0.3",
     "gl-matrix": "^3.4.3",
     "html-loader": "^3.1.0",
