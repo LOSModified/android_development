@@ -6,15 +6,11 @@ LOCAL_PATH := $(call my-dir)
 sdk_props := $(HOST_OUT)/development/sdk/doc_source.properties \
              $(HOST_OUT)/development/sdk/platform_source.properties \
              $(HOST_OUT)/development/sdk/source_source.properties
-sample_props := $(patsubst \
-                  $(TOPDIR)development/samples/%_source.prop_template, \
-                  $(HOST_OUT)/development/samples/%_source.properties, \
-                  $(wildcard $(TOPDIR)development/samples/*_source.prop_template))
 sys_img_props := $(patsubst \
                    $(TOPDIR)development/sys-img/%_source.prop_template, \
                    $(HOST_OUT)/development/sys-img-$(TARGET_CPU_ABI)/%_source.properties, \
                    $(wildcard $(TOPDIR)development/sys-img/*_source.prop_template))
-ALL_SDK_FILES += $(sdk_props) $(sample_props) $(sys_img_props)
+ALL_SDK_FILES += $(sdk_props) $(sys_img_props)
 
 # Rule to convert a source.prop template into the desired source.property
 # This needs to vary based on the CPU ABI for the system-image files.
@@ -44,9 +40,6 @@ $(sys_img_props) : $(HOST_OUT)/development/sys-img-$(TARGET_CPU_ABI)/%_source.pr
 	$(process_prop_template)
 
 $(sdk_props) : $(HOST_OUT)/development/sdk/%_source.properties : $(TOPDIR)development/sdk/%_source.prop_template
-	$(process_prop_template)
-
-$(sample_props) : $(HOST_OUT)/development/samples/%_source.properties : $(TOPDIR)development/samples/%_source.prop_template
 	$(process_prop_template)
 
 # ===== SDK jar file of stubs =====
